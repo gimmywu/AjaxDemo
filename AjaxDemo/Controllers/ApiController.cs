@@ -8,7 +8,7 @@ namespace AjaxDemo.Controllers
     {
         public IActionResult Index(string name)
         {
-            return Content("Hello, Ajax", "text/plain", Encoding.UTF8);
+            
             if (string.IsNullOrEmpty(name))
             {
                 name = "Ajax";

@@ -67,7 +67,7 @@ $('.display-4').text("歡迎光臨my form")
              const {name,workYears,salary} = emp;
              return (`<li>${name}-${salary}</li>`)
              })
-              theUl.innerHTML = data.join("");   //把name-salary放在一起，用join()
+        theUl.innerHTML = data.join("---------------");   //join():把不同筆資料放一起中間用----隔開
 
 
 

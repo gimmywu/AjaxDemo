@@ -5,11 +5,48 @@
 
 <h1>Json for Travel</h1>
 
+<div class="justify-content-xxl" id="box">
+<div class="card mb-3" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">NAME</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+    <div class="card mb-3" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">NAME</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+</div>
+
+
+
+
 
 @section Scripts{
+<script src="~/js/travel.js"></script>
 <script>
-    <script src=""></text>
+   console.log(DATAS);
+        let data = DATAS.map((info,index,array)=>{
+            const { InfoId, TYWebsite, Name, Toldescribe, Add, Zipcode, Opentime, Px, Py, Website, Parkinginfo, Ticketinfo, Remarks, Tel, Fax, Changetime} = info;
+            return (
+                `<div class="card mb-3" style="width: 18rem;">
+                    <div class="card-body">
+                    <h5 class="card-title">${Name}</h5>
+                                    <p class="card-text">${Toldescribe}</p>
+                                                    <p class="card-text">${Add}</p>
+                                                                    <p class="card-text">${Opentime}</p>
+                                                                            <p class="card-text">${Tel}</p>
+                            <a href="#" class="btn btn-primary">Website</a>
+                </div>
+            </div>`)
+        })
 
+        
+   
 
-    </script>
+</script>
 }
