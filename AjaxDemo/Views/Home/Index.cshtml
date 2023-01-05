@@ -6,3 +6,71 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+<ul id="myUl"></ul>
+
+@section Scripts
+{
+    <script>
+$('.display-4').text("歡迎光臨my form")
+
+ ////   $('.display-4').text('Welcome Section!!');
+     //   const emps = [{"name":"Tom","workYears":3,"salary":35000},
+     //                {"name":"Jack","workYears":5,"salary":40000},
+     //                {"name":"Mary","workYears":7,"salary":45000}];
+     // //讀取JSON資料
+     // // [ 0,1,2] => 陣列，透過 Index 讀取資料
+     // //{屬性:屬性值,key:value} => 物件.屬性 => 屬性值
+     //   //console.log(emps[1]);  //{"name":"Jack","workYears":5,"salary":40000}
+     //   //console.log(emps[1].name);  //Jack
+     //   //console.log(emps[1].salary);  //40000
+     //   for(let i=0,max=emps.length;i<max;i++){
+     //       console.log(emps[i].name);
+     //       console.log(emps[i].workYears);
+     //       console.log(emps[i].salary);
+     //   }
+        const emp = {
+            "employees": [
+                { "name": "Tom", "workYears": 3, "salary": 35000 },
+                { "name": "Jack", "workYears": 5, "salary": 40000 },
+                { "name": "Mary", "workYears": 7, "salary": 45000 }
+            ]
+        };
+        //for(var i =0;i<emp.employees.length;i++){
+        //    console.log("姓名："+emp.employees[i].name);
+        //    console.log("年資："+emp.employees[i].workYears);
+        //    console.log("薪資："+emp.employees[i].salary);
+        //            };
+
+            const theUl = document.querySelector('#myUl');
+                   for(let i=0,max=emp.employees.length;i<max;i++){
+                       const { name, workYears, salary } = emp.employees[i];    //新的寫法，設定一個物件變數對應emp.employees[i]物件，之後直接呼叫name即可得到屬性值
+                   
+                    //資料的顯示  DOM
+                    //建立 li 元素節點 <li>
+                    const eleLi = document.createElement('li');
+                    //建立文字節點 name
+                    const txtLi = document.createTextNode(name);
+                    //將文字節點加到元素節點中 <li>name</li>
+                    eleLi.appendChild(txtLi);
+                    //將li加到ul中 <ul><li></ul>
+            theUl.appendChild(eleLi);
+            };
+           
+      
+
+
+
+    </script>
+    
+}
+
+    @section styles
+    {
+        <style>
+            .display-4{
+                background-color:lightcyan
+            }
+        </style>
+           
+        }
+}
