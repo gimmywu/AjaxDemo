@@ -4,7 +4,7 @@
 }
 
 <h1>FirstAjsx</h1>
-
+<input type="text" id="text1" />
 <button class="btn btn-primary" id="button1">Click</button>
 <div id="div1" class="alert-info mt-3 p-3 w-50"></div>
 
@@ -14,6 +14,7 @@
     <script>
         const btn = document.querySelector('#button1');
         const theDiv = document.querySelector('#div1');
+        const txt = document.querySelector('#text1');
         btn.addEventListener('click', () => {
 
             //步驟一建立Ajax物件
@@ -30,7 +31,8 @@
             })
               //步驟二發出要求
             //open("Http Method(GET、POST、PUT、DELETE)", "伺服器端的程式", 同步或非同步(預設))
-            xhr.open("Get", "/Api/Index");
+            //xhr.open("Get", "/Api/Index");
+            xhr.open("GET", `/Api/Index?name=${text1.value}`);
             xhr.send();
         });
     </script>
