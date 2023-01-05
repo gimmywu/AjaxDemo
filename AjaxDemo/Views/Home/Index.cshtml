@@ -41,22 +41,34 @@ $('.display-4').text("歡迎光臨my form")
         //    console.log("薪資："+emp.employees[i].salary);
         //            };
 
-            const theUl = document.querySelector('#myUl');
-                   for(let i=0,max=emp.employees.length;i<max;i++){
-                       const { name, workYears, salary } = emp.employees[i];    //新的寫法，設定一個物件變數對應emp.employees[i]物件，之後直接呼叫name即可得到屬性值
+            //const theUl = document.querySelector('#myUl');
+            //       for(let i=0,max=emp.employees.length;i<max;i++){
+            //           const { name, workYears, salary } = emp.employees[i];    //新的寫法，設定一個物件變數對應emp.employees[i]物件，之後直接呼叫name即可得到屬性值
                    
-                    //資料的顯示  DOM
-                    //建立 li 元素節點 <li>
-                    const eleLi = document.createElement('li');
-                    //建立文字節點 name
-                    const txtLi = document.createTextNode(name);
-                    //將文字節點加到元素節點中 <li>name</li>
-                    eleLi.appendChild(txtLi);
-                    //將li加到ul中 <ul><li></ul>
-            theUl.appendChild(eleLi);
-            };
+            //        //資料的顯示  DOM
+            //        //建立 li 元素節點 <li>
+            //        const eleLi = document.createElement('li');
+            //        //建立文字節點 name
+            //        const txtLi = document.createTextNode(name);
+            //        //將文字節點加到元素節點中 <li>name</li>
+            //        eleLi.appendChild(txtLi);
+            //        //將li加到ul中 <ul><li></ul>
+            //theUl.appendChild(eleLi);
+            //};
            
+             //const theUl = document.querySelector('#myUl');
+             //emp.employees.forEach((emp,index,array)=>{     //foreach方法使用
+             //const {name,workYears,salary} = emp;
+             //console.log(name);
+             //})
       
+             const theUl = document.querySelector('#myUl');
+             let data = emp.employees.map((emp,index,array)=>{   //map方法使用
+             const {name,workYears,salary} = emp;
+             return (`<li>${name}-${salary}</li>`)
+             })
+              theUl.innerHTML = data.join("");   //把name-salary放在一起，用join()
+
 
 
 
@@ -73,4 +85,3 @@ $('.display-4').text("歡迎光臨my form")
         </style>
            
         }
-}
