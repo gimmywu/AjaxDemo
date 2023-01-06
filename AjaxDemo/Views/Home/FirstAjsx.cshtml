@@ -34,7 +34,7 @@
 
 
             // Ajax Start
-               xhr.addEventListener(loadstart"loadstart",()=>
+               xhr.addEventListener("loadstart",()=>
                {
                    btn.textContent="執行中...";
                 btn.setAttribute("disable", 'disabled');
@@ -60,7 +60,7 @@
 
 
         //停止Ajax的呼叫並在網頁上秀"您停止了程式的執行"
-        btnStop.addEventListener('click', () => {
+        btn2.addEventListener('click', () => {
                 xhr.abort();
             })
             xhr.addEventListener('abort', () => {
@@ -78,7 +78,7 @@
             //open("Http Method(GET、POST、PUT、DELETE)", "伺服器端的程式", 同步或非同步(預設))
             //xhr.open("Get", "/Api/Index");
             xhr.open("GET", `/Api/Index?name=${txt.value}`);
-            xhr.ontimeout(3000);  //3秒後沒有執行就結束
+            xhr.ontimeout= 3000 ;  //3秒後沒有執行就結束
             xhr.send();
         });
 

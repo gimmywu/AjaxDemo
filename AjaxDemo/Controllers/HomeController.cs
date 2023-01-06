@@ -1,7 +1,7 @@
 ﻿using AjaxDemo.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using WebApplication1.Models;
+//using WebApplication1.Models;
 
 namespace AjaxDemo.Controllers
 {
@@ -36,11 +36,11 @@ namespace AjaxDemo.Controllers
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        //public IActionResult Error()
+        //{
+        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        //}
 
         public IActionResult FirstAjsx()
         {
