@@ -5,7 +5,7 @@
 
 <h1>Json for Travel</h1>
 
-<div class="justify-content-xxl" id="box">
+<div class="d-flex justify-content-between flex-wrap" id="box" >
 <div class="card mb-3" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">NAME</h5>
@@ -27,9 +27,10 @@
 
 
 @section Scripts{
-<script src="~/js/travel.js"></script>
+<script src= "~/js/travel.js" ></script>
 <script>
-   console.log(DATAS);
+    const box = document.querySelector("#box");
+    console.log(DATAS);
         let data = DATAS.map((info,index,array)=>{
             const { InfoId, TYWebsite, Name, Toldescribe, Add, Zipcode, Opentime, Px, Py, Website, Parkinginfo, Ticketinfo, Remarks, Tel, Fax, Changetime} = info;
             return (
@@ -40,11 +41,11 @@
                                                     <p class="card-text">${Add}</p>
                                                                     <p class="card-text">${Opentime}</p>
                                                                             <p class="card-text">${Tel}</p>
-                            <a href="#" class="btn btn-primary">Website</a>
+                            <a href="${Website}" class="btn btn-primary">拜訪網址</a>
                 </div>
             </div>`)
         })
-
+    box.innerHTML = data.join("");
         
    
 
