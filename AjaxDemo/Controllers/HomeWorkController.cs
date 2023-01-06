@@ -8,5 +8,9 @@ namespace AjaxDemo.Controllers
         {
             return View();
         }
+        public IActionResult Register()
+        {
+            return View();
+        }
     }
 }
