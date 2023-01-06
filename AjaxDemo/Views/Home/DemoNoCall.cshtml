@@ -1,0 +1,12 @@
+﻿@model IEnumerable<AjaxDemo.Models.Member>
+@{
+    ViewData["Title"] = "DemoNoCall";
+}
+
+<h1>DemoNoCall</h1>
+<ul>
+    @foreach(var member in Model){
+        <li>@member.Name</li>
+    }
+
+</ul>

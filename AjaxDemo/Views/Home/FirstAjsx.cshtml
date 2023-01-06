@@ -6,6 +6,7 @@
 <h1>FirstAjsx</h1>
 <input type="text" id="text1" />
 <button class="btn btn-primary" id="button1">Click</button>
+<button class="btn btn-primary" id="button2">Click2</button>
 <div id="div1" class="alert-info mt-3 p-3 w-50"></div>
 
 
@@ -13,30 +14,78 @@
 {
     <script>
         const btn = document.querySelector('#button1');
+        const btn2 = document.querySelector('#button2');
         const theDiv = document.querySelector('#div1');
         const txt = document.querySelector('#text1');
-        btn.addEventListener('click', () => {
+       
+        
 
             //步驟一建立Ajax物件
         var xhr = new XMLHttpRequest();
-
+                    
             //步驟三接收伺服器回傳的結果
             xhr.addEventListener('load', () => {
-                
-                //接收資料
-                const data = xhr.responseText;
-                
+                   //接收資料
+            const data = xhr.responseText;
                 //顯示資料
                 theDiv.innerHTML = `<h2>${data}</h2>`
+               })
+
+
+
+            // Ajax Start
+               xhr.addEventListener(loadstart"loadstart",()=>
+               {
+                   btn.textContent="執行中...";
+                btn.setAttribute("disable", 'disabled');
+                theDiv.innerHTML += `Ajax開始<br>`
+               })
+
+
+        //Ajax End
+        xhr.addEventListener('loadend', () => {
+            btn.textContent = "Click";
+            btn.removeAttribute('disabled');
+            txt.value = "";
+            theDiv.innerHTML += `Ajax結束<br>`
+        })
+
+               //停止Ajax的呼叫
+            btn2.addEventListener('click', () => {
+                xhr.abort(); 
             })
+          
+
+            
+
+
+        //停止Ajax的呼叫並在網頁上秀"您停止了程式的執行"
+        btnStop.addEventListener('click', () => {
+                xhr.abort();
+            })
+            xhr.addEventListener('abort', () => {
+                theDiv.innerHTML += `您停止了程式的執行<br>`
+            })
+
+
+        //  xhr.ontimeout(3000); 3秒後停止顯示忙碌中字樣，跟下面xhr.ontimeout(3000);有關連
+        xhr.addEventListener('timeout', () => {
+            theDiv.innerHTML += `伺服器忙碌中，請稍後再來<br>`
+        })
+
+        btn.addEventListener('click', () => {
               //步驟二發出要求
             //open("Http Method(GET、POST、PUT、DELETE)", "伺服器端的程式", 同步或非同步(預設))
             //xhr.open("Get", "/Api/Index");
             xhr.open("GET", `/Api/Index?name=${txt.value}`);
+            xhr.ontimeout(3000);  //3秒後沒有執行就結束
             xhr.send();
         });
+
+
+
     </script>
-    <script>
+    <script>//自己練習用
         //var btn = document.querySelector('#button1');
         //var txt1 = document.querySelector("#text1");
         //var div1 = document.querySelector("#"div1);

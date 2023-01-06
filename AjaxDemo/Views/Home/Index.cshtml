@@ -41,20 +41,23 @@ $('.display-4').text("歡迎光臨my form")
         //    console.log("薪資："+emp.employees[i].salary);
         //            };
 
-            //const theUl = document.querySelector('#myUl');
-            //       for(let i=0,max=emp.employees.length;i<max;i++){
-            //           const { name, workYears, salary } = emp.employees[i];    //新的寫法，設定一個物件變數對應emp.employees[i]物件，之後直接呼叫name即可得到屬性值
+        let docFrag = document.createDocumentFragment();   //空的tag放foreach比較不會吃效能
+            const theUl = document.querySelector('#myUl');
+                   for(let i=0,max=emp.employees.length;i<max;i++){
+                       const { name, workYears, salary } = emp.employees[i];    //新的寫法，設定一個物件變數對應emp.employees[i]物件，之後直接呼叫name即可得到屬性值
                    
-            //        //資料的顯示  DOM
-            //        //建立 li 元素節點 <li>
-            //        const eleLi = document.createElement('li');
-            //        //建立文字節點 name
-            //        const txtLi = document.createTextNode(name);
-            //        //將文字節點加到元素節點中 <li>name</li>
-            //        eleLi.appendChild(txtLi);
-            //        //將li加到ul中 <ul><li></ul>
-            //theUl.appendChild(eleLi);
-            //};
+                    //資料的顯示  DOM
+                    //建立 li 元素節點 <li>
+                    const eleLi = document.createElement('li');
+                    //建立文字節點 name
+                    const txtLi = document.createTextNode(name);
+                    //將文字節點加到元素節點中 <li>name</li>
+                    eleLi.appendChild(txtLi);
+                    //將li加到ul中 <ul><li></ul>
+            docFrag.appendChild(eleLi);
+            //theUl.appendChild(eleLi);  //在foreach裡面放這段等於會做很多次
+            };
+        theUl.appendChild(eleLi);   //所以要放外面但是會抓不到值，所以要設一個
            
              //const theUl = document.querySelector('#myUl');
              //emp.employees.forEach((emp,index,array)=>{     //foreach方法使用
