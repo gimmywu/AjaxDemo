@@ -28,7 +28,7 @@
                    //接收資料
             const data = xhr.responseText;
                 //顯示資料
-                theDiv.innerHTML = `<h2>${data}</h2>`
+                theDiv.innerHTML += `<h2>${data}</h2>`
                })
 
 
@@ -78,7 +78,7 @@
             //open("Http Method(GET、POST、PUT、DELETE)", "伺服器端的程式", 同步或非同步(預設))
             //xhr.open("Get", "/Api/Index");
             xhr.open("GET", `/Api/Index?name=${txt.value}`);
-            xhr.ontimeout= 3000 ;  //3秒後沒有執行就結束
+            xhr.timeout= 1000 ;  //3秒後沒有執行就結束
             xhr.send();
         });
 

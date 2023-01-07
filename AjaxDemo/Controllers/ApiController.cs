@@ -8,10 +8,10 @@ namespace AjaxDemo.Controllers
     {
         public IActionResult Index(string name)
         {
-            
+            System.Threading.Thread.Sleep(3500);   //延遲5秒再執行
             if (string.IsNullOrEmpty(name))
             {
-                System.Threading.Thread.Sleep(3500);   //延遲5秒再執行
+                
                 name = "Ajax";
             }
            
