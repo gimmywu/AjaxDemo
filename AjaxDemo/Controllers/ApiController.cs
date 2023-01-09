@@ -45,7 +45,7 @@ namespace AjaxDemo.Controllers
             }//把檔案丟到photo,fileStream，fileStream匯會根據filePath, FileMode.Create做相關設定
 
 
-            member.FileName = fileName;
+            member.FileName = fileName;   //寫入資料庫
             //將圖轉成二進位
             byte[]? imgByte = null;
             using (var memoryStream = new MemoryStream())
@@ -53,12 +53,12 @@ namespace AjaxDemo.Controllers
                 photo.CopyTo(memoryStream);
                 imgByte = memoryStream.ToArray();
             }
-            member.FileData = imgByte;
+            member.FileData = imgByte;   //一樣寫進資料庫
 
             //將會員資料寫進資料庫
             db.Members.Add(member);
             db.SaveChanges();
-
+               
 
             //return Content($"Hello, {member.Name}, You are {member.Age} years old, {member.Email}。", "text/plain", Encoding.UTF8);
             // return Content($"{photo.FileName}-{photo.Length}-{photo.ContentType}", "text/plain", Encoding.UTF8);
