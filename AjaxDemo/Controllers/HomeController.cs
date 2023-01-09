@@ -21,10 +21,13 @@ namespace AjaxDemo.Controllers
             var member = _conetxt.Members;
             return View(member);
         }
+        public IActionResult Create()   //測試是否可以不用呼叫
+        {
+            return View();  
+        }
 
 
-
-        public IActionResult Index()
+            public IActionResult Index()
         {
             return View();
         }
@@ -35,14 +38,26 @@ namespace AjaxDemo.Controllers
         {
             return View();
         }
+        public IActionResult DBcheck()
+        { 
+            DemoContext db  = new DemoContext();
+            var mem = from c in db.Members
+                      select c;
+            return View(mem);
+        }
 
-        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        //public IActionResult Error()
-        //{
-        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        //}
+            //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+            //public IActionResult Error()
+            //{
+            //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            //}
 
-        public IActionResult FirstAjsx()
+            public IActionResult FirstAjsx()
+        {
+            return View();
+        }
+
+        public IActionResult PostAjsx()
         {
             return View();
         }

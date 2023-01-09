@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "PoatAjax";
+}
+
+<h1>PoatAjax</h1>
+<div id="div"> 
+
+</div>
+
+@section Scripts
+    {
+        <script>
+            const xhr = new XMLHttpRequest();   //實體化xmlhttprequest，沒什麼好說的
+            xhr.addEventListener("load",()=>{   //設定一個ajax的loading事件
+            document.querySelector("#div").innerHTML=xhr.responseText; //把div的內容變成xhr接收到的東西
+            })
+
+            xhr.open("POST", "/Api/Index");   //form的資料傳送是在open中設定哪種模式及路徑
+            xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded"); //要額外加這行，說明項server送出的要求是content-type
+            xhr.send("name=Jack&age=30")  //把傳到server端的資料放到send()中
+
+
+        </script>
+
+}
