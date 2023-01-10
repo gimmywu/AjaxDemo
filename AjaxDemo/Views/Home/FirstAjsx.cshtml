@@ -28,9 +28,11 @@
                    //接收資料
             const data = xhr.responseText;
                 //顯示資料
-            theDiv.innerHTML += `<h2>${data}</h2>`
+                theDiv.innerHTML += `<h2>${data}</h2>`
                })
-                
+
+
+
             // Ajax Start
                xhr.addEventListener("loadstart",()=>
                {
@@ -47,6 +49,15 @@
             txt.value = "";
             theDiv.innerHTML += `Ajax結束<br>`
         })
+
+               //停止Ajax的呼叫
+            btn2.addEventListener('click', () => {
+                xhr.abort(); 
+            })
+          
+
+            
+
 
         //停止Ajax的呼叫並在網頁上秀"您停止了程式的執行"
         btn2.addEventListener('click', () => {
