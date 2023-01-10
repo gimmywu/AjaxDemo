@@ -28,11 +28,9 @@
                    //接收資料
             const data = xhr.responseText;
                 //顯示資料
-                theDiv.innerHTML += `<h2>${data}</h2>`
+            theDiv.innerHTML += `<h2>${data}</h2>`
                })
-
-
-
+                
             // Ajax Start
                xhr.addEventListener("loadstart",()=>
                {
@@ -49,15 +47,6 @@
             txt.value = "";
             theDiv.innerHTML += `Ajax結束<br>`
         })
-
-               //停止Ajax的呼叫
-            btn2.addEventListener('click', () => {
-                xhr.abort(); 
-            })
-          
-
-            
-
 
         //停止Ajax的呼叫並在網頁上秀"您停止了程式的執行"
         btn2.addEventListener('click', () => {
@@ -78,6 +67,8 @@
             //open("Http Method(GET、POST、PUT、DELETE)", "伺服器端的程式", 同步或非同步(預設))
             //xhr.open("Get", "/Api/Index");
             xhr.open("GET", `/Api/Index?name=${txt.value}`);
+            //開啟通道後要得到Api/Index裡面的name，但index跟沒有新增檢視，index後面的name是FirstAjsx頁面的txt.value給的
+
             xhr.timeout= 1000 ;  //3秒後沒有執行就結束
             xhr.send();
         });
