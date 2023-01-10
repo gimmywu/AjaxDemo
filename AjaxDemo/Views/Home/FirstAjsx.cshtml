@@ -66,7 +66,9 @@
               //步驟二發出要求
             //open("Http Method(GET、POST、PUT、DELETE)", "伺服器端的程式", 同步或非同步(預設))
             //xhr.open("Get", "/Api/Index");
-            xhr.open("GET", `/Api/Index?name=${txt.value}`);
+                       
+            //xhr.open("GET", `/Api/Index?name=${txt.value}`);
+            xhr.open("GET",`@Url.Content("~/Api/Index?name=${txt.value}")`);   //使用@url.content來統一路徑寫法，避免html跟js寫法不同
             //開啟通道後要得到Api/Index裡面的name，但index跟沒有新增檢視，index後面的name是FirstAjsx頁面的txt.value給的
 
             xhr.timeout= 1000 ;  //3秒後沒有執行就結束

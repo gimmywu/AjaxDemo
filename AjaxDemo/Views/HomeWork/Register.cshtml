@@ -10,13 +10,13 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Register">
+        
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
            
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <input type="text" asp-for="Name" class="form-control" id="txtname"/>
+                <span id="span"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
@@ -24,7 +24,11 @@
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             
-        </form>
+            <div class="form-group">
+                <input type="button" id="btn" value="Check" class="btn btn-primary" />
+            </div>
+                   
+
     </div>
 </div>
 
@@ -32,3 +36,25 @@
     <a asp-action="Index">回不去</a>
 </div>
 
+
+
+@section Scripts
+{<script>
+    const btn = document.querySelector("#btn");
+         const txtname = document.querySelector("#txtname");
+        
+         const xhr = new XMLHttpRequest();  
+         xhr.addEventListener("load", () => {   
+             
+             document.querySelector("#span").innerHTML = xhr.responseText; 
+         })
+
+         btn.addEventListener("click",()=>{
+             xhr.open("POST", "/HomeWork/CheckName");
+         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+             xhr.send(`name=${txtname.value}`)
+         });
+
+
+
+    </script> }
