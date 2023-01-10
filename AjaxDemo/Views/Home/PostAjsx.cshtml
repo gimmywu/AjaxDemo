@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "PoatAjax";
+}
+
+<h1>PoatAjax</h1>
+<form method="post" name="userForm" class="w-50">
+    <div class="mb-3">
+        <label for="name" class="form-label">姓名</label>
+        <input type="text" class="form-control" id="name" name="name">
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">電子郵件</label>
+        <input type="email" class="form-control" id="eamil" name="email">
+    </div>
+    <div class="mb-3">
+        <label for="age" class="form-label">年紀</label>
+        <input type="text" class="form-control" id="age" name="age">
+    </div>
+    <div class="mb-3">
+        <label for="formFile" class="form-label">照片</label>
+        <input class="form-control" type="file" id="formFile" name="photo">
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary mb-3">送出</button>
+    </div>
+
+</form>
+
+<div id="div">
+</div>O
+
+@section Scripts
+    {
+    <script>
+        const btn = document.querySelector('button[type="submit"]');
+        btn.addEventListener("click", (event) => {
+            event.preventDefault(); //停止submit預設的行為(網路畫面會閃一下)
+            const xhr = new XMLHttpRequest();
+            xhr.addEventListener('load', () => {
+                document.querySelector('#div1').innerHTML = xhr.responseText;
+            })
+
+            const formData = new FormData(document.userForm);  //放form的name屬性值
+            xhr.open("POST", "@Url.Content("/Api/register")");
+            xhr.send(formData);
+
+                    //const xhr = new XMLHttpRequest();   //實體化xmlhttprequest，沒什麼好說的
+                    //xhr.addEventListener("load",()=>{   //設定一個ajax的loading事件
+                    //document.querySelector("#div").innerHTML=xhr.responseText; //把div的內容變成xhr接收到的東西
+                    //})
+
+                    //xhr.open("POST", Url.Content("/Api/Index"));   //form的資料傳送是在open中設定哪種模式及路徑
+                    //xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded"); //要額外加這行，說明項server送出的要求是content-type
+                    //xhr.send("name=Jack&age=30")  //把傳到server端的資料放到send()中
+
+    </script>
+
+}
