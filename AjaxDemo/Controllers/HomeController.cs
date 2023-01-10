@@ -61,7 +61,12 @@ namespace AjaxDemo.Controllers
         {
             return View();
         }
-        public IActionResult PostAjsx()
+        public IActionResult Fetch()
+        {
+            return View();
+        }
+
+        public IActionResult Address()
         {
             return View();
         }

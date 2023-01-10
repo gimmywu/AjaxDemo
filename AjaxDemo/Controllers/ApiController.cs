@@ -67,7 +67,31 @@ namespace AjaxDemo.Controllers
             
         }
 
+        //讀取城市名稱
+        public IActionResult City()
+        {
+            var cities = _context.Addresses.Select(c => c.City).Distinct();
+            //var cities = _context.Addresses.Select(c => new
+            //{
+            //    c.City
+            //}).Distinct().OrderBy(c => c.City);
+            return Json(cities);
+        }
+        //根據城市名稱讀取鄉鎮區
+        public IActionResult Site(string city)
+        {
+            var sites = _context.Addresses.Where(s => s.City == city).Select(s => s.SiteId).Distinct();
 
+            return Json(sites);
+        }
+        //根據鄉鎮區讀取路名
+        public IActionResult Road(string site)
+        {
+            var roads = _context.Addresses.Where(s => s.SiteId == site).Select(s => s.Road).Distinct();
+
+            return Json(roads);
+        }
 
     }
+
 }

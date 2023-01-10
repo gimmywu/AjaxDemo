@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewData["Title"] = "Fetch";
+}
+
+<h1>Fetch</h1>
+
+@section Scripts{
+        <script>
+          // console.log( fetch("@Url.Content("~/api/index")")); //回傳一個Promise物件
+            //fetch("@Url.Content("~/api/index")")
+            //    .then(response=>{
+            //        if(response.ok){
+            //           console.log(response);
+            //           console.log(response.headers.get("content-type"))
+            //            console.log(response.headers.get("content-encoding"));
+            //            console.log(response.headers.get("content-length"));
+            //           console.log(response.headers.get("date"));
+            //           //console.log(response.text()); //這是一個promise物件
+            //           return response.text();
+            //        }else{
+            //            console.log(response.status);
+            //        }
+
+            //    })
+            //    .then(data=>console.log(data))
+            //    .catch();
+
+            //fetch("@Url.Content("~/api/index"))
+            //   .then(response=>response.text())
+            //   .then(data=>console.log(data)
+            //   .then()
+            //   .catch();
+
+            async function asyncFun(){
+                //非同步程式
+                const response = await fetch("@Url.Content("~/api/index")");
+                const data = await response.text();
+                console.log(data);
+            }
+
+            asyncFun();
+
+        </script>
+
+}
