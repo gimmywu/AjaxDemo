@@ -51,13 +51,5 @@ namespace AjaxDemo.Controllers
             return View();
         }
 
-        public IActionResult Address()
-        {
-            return View();
-        }
-        public  IActionResult Fetch()
-        {
-            return View();
-        }
     }
 }
