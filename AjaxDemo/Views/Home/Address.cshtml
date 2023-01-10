@@ -35,8 +35,8 @@
             //        const cityOpts = datas.map(value => `<option value=${value}>${value}</option>`)
             //        selCity.innerHTML = cityOpts.join("");
             //    });       
-            const response = await  fetch("@Url.Content("~/Api/City")");
-          const datas = await response.json();
+            const response = await  fetch("@Url.Content("~/Api/City")");    //是個promise
+          const datas = await response.json();  
           const  cityOpts = datas.map(value => `<option value=${value}>${value}</option>`)
             selCity.innerHTML = cityOpts.join("");
             //載入鄉鎮區
@@ -44,8 +44,8 @@
  };
          async function loadSite(){
             const city = selCity.options[selCity.selectedIndex].value;   //抓前面選了哪個城市
-            const response = await fetch(`@Url.Content("~/api/site?city=${city}")`);
-                     const datas = await response.json();
+            const response = await fetch(`@Url.Content("~/api/site?city=${city}")`);  //在網址中把城市選取
+                     const datas = await response.json();  //回傳的鄉鎮區是promise物件，所以要再用await把資料轉出來
                     const siteOpts = datas.map(value => `<option value=${value}>${value}</option>`)
             selSite.innerHTML = siteOpts.join("");
                     //載入路名

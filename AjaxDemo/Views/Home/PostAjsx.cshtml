@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "PoatAjax";
+    ViewData["Title"] = "PostAjsx";
 }
 
 <h1>PoatAjax</h1>
@@ -28,22 +28,41 @@
 
 <div id="div"> 
 
-</div>O
+</div>
 
 @section Scripts
     {
         <script>
         const btn = document.querySelector('button[type="submit"]');
-        btn.addEventListener("click", (event) => {
-            event.preventDefault(); //停止submit預設的行為(網路畫面會閃一下)
-            const xhr = new XMLHttpRequest();
-            xhr.addEventListener('load', () => {
-                document.querySelector('#div1').innerHTML = xhr.responseText;
-            })
 
-            const formData = new FormData(document.userForm);  //放form的name屬性值
-            xhr.open("POST", "@Url.Content("/Api/register")");
-            xhr.send(formData);
+        //一開始作法
+        //btn.addEventListener("click", (event) => {
+        //    event.preventDefault(); //停止submit預設的行為(網路畫面會閃一下)
+        //    const xhr = new XMLHttpRequest();
+        //    xhr.addEventListener('load', () => {
+        //        document.querySelector('#div1').innerHTML = xhr.responseText;
+        //    })
+
+        //    const formData = new FormData(document.userForm);  //放form的name屬性值
+        //    xhr.open("POST", "@Url.Content("/Api/Register")");
+        //    xhr.send(formData);
+        // ----------------------------------------------------------------------------------------------
+
+        btn.addEventListener("click", async (event) => {     //非同步新寫法，用async function()
+            event.preventDefault();
+            const formData = new FormData(document.userForm);  //把頁面的資料放到formdata中
+            //    fetch(url,{})
+            const response = await fetch(`@Url.Content("/Api/Register")`, {
+                method: "POST",
+                body: formData     //用post 的方式，把放在formData的資料從request的body送到server端
+            });
+            const data = await response.text();    //把server段的return XXXX 帶過來並放在'#div1中
+            document.querySelector('#div').innerHTML = data
+        })
+
+
+
+       // ----------------------------------------------------------------------------------------------
 
             //const xhr = new XMLHttpRequest();   //實體化xmlhttprequest，沒什麼好說的
             //xhr.addEventListener("load",()=>{   //設定一個ajax的loading事件
@@ -53,6 +72,7 @@
             //xhr.open("POST", Url.Content("/Api/Index"));   //form的資料傳送是在open中設定哪種模式及路徑
             //xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded"); //要額外加這行，說明項server送出的要求是content-type
             //xhr.send("name=Jack&age=30")  //把傳到server端的資料放到send()中
+
 
     </script>
 

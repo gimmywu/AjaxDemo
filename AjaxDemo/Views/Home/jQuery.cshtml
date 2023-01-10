@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewData["Title"] = "jQuery";
+}
+
+<h1>jQuery</h1>
+<div class="row">
+<div class="col-3"></div>
+<div class="col-9">
+<button id="buttonGet" class="btn btn-primary">get</button>
+<button id="buttonPost" class="btn btn-secondary">post</button>
+<button id="buttonJson" class="btn btn-success">getJson</button>
+<button id="buttonLoad" class="btn btn-info">load</button>
+<button id="buttonAjax" class="btn btn-warning">ajax</button>
+<button id="buttonCors" class="btn btn-danger">cors</button>
+<div class="alert alert-dark mt-3 w-50" role="alert" id="divAlert">
+
+</div>
+
+</div>
+</div>
+@section Scripts{
+    <script>
+        $(".col-3").load("@Url.Content("~/Home/Partial")")
+
+        $('#buttonGet').click(function () {
+            $.get("@Url.Content("~/Api/Index")",{"name":'jimmy',"age":35},
+            function (dataiwant){
+                    $("#divAlert").html(`<h3>${dataiwant}</h3>`);
+            })
+            $('#divAlert').text("GET")
+        })
+        $('#buttonPost').click(function () {
+            $.post("@Url.Content("/Api/Index")", { "name": 'Gimmy', "age": 30 },
+                function (dataiwant) {
+                    $("#divAlert").html(`<h3>${dataiwant}</h3>`);
+                })
+            $('#divAlert').text("POST")
+        })
+        $('#buttonJson').click(function () {
+            $.getJSON("@Url.Content("~/Api/Site")",{"city":"新北市"},function(data){
+                let docfrag = $(document.createDocumentFragment());  //做一個空的容器放data(回來的是陣列)，用$()，把docfrag變成jquery格式
+                $.each(data,function (index,site){
+                    const eleh3 = $(`<h4></h4>`).text(site);
+                    docfrag.append(eleh3);
+                })
+                $('#divAlert').html(docfrag);
+            })
+
+           
+        })
+        $('#buttonLoad').click(function () {
+
+            $('#divAlert').load("@Url.Content("~/Home/Partial")")
+        })
+
+
+        $('#buttonAjax').click(function () {
+          $.ajax({
+              url:"@Url.Content("~/Api/Site")",
+              type:"GET",
+              data:{"city":"臺北市"},
+              dataType:"json"
+          })
+          .done(data=>{
+                    $("#divAlert").html(`<h4>${data}</h4>`);
+          })
+        })
+        $('#buttonCors').click(function () {
+            $('#divAlert').text("CORs")
+        })
+
+    </script>
+}

@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AjaxDemo", "AjaxDemo\AjaxDemo.csproj", "{A089DFA4-C1CD-4E60-8085-FBE0B02A56EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AjaxDemo", "AjaxDemo\AjaxDemo.csproj", "{A089DFA4-C1CD-4E60-8085-FBE0B02A56EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreAPI", "CoreAPI\CoreAPI.csproj", "{12E10BAB-F3F1-475E-9364-45F9A6AA17B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{A089DFA4-C1CD-4E60-8085-FBE0B02A56EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A089DFA4-C1CD-4E60-8085-FBE0B02A56EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A089DFA4-C1CD-4E60-8085-FBE0B02A56EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12E10BAB-F3F1-475E-9364-45F9A6AA17B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12E10BAB-F3F1-475E-9364-45F9A6AA17B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12E10BAB-F3F1-475E-9364-45F9A6AA17B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12E10BAB-F3F1-475E-9364-45F9A6AA17B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

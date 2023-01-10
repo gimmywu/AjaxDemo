@@ -18,7 +18,7 @@ namespace AjaxDemo.Controllers
         }
         public IActionResult Index(string name,int age=20)
         {
-            System.Threading.Thread.Sleep(3500);   //延遲5秒再執行
+            //System.Threading.Thread.Sleep(3500);   //延遲5秒再執行
             if (string.IsNullOrEmpty(name))
             {
                 
@@ -27,9 +27,9 @@ namespace AjaxDemo.Controllers
            
             return Content($"Hello, {name},You are {age} years old。", "text/plain", Encoding.UTF8);
         } //content的參數有三種，1.字串或數字，2.資料型別，3.用什麼編碼，如果字串裡面有中文，但沒有設utf8，網頁會出現亂碼
-        
-        
-        
+
+
+        //Scaffold-DbContext "Data Source=.;Initial Catalog=Demo;Integrated Security=True;TrustServerCertificate=true;”Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
         public IActionResult Register(Member member, IFormFile photo)
         {
             DemoContext db = new DemoContext();

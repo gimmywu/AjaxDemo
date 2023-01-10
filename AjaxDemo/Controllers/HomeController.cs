@@ -1,6 +1,7 @@
 ﻿using AjaxDemo.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 //using WebApplication1.Models;
 
 namespace AjaxDemo.Controllers
@@ -70,6 +71,14 @@ namespace AjaxDemo.Controllers
         {
             return View();
         }
-
+        public IActionResult jQuery()
+        {
+            return View();
+        }
+        public IActionResult Partial()
+        {
+            ViewBag.data = "hello partial view";
+            return PartialView(_conetxt.Members);
+        }
     }
 }
