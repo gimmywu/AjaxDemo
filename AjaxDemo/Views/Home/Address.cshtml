@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewData["Title"] = "Address";
+}
+
+<h1>Address</h1>
+<select id="select1">
+    <option value="a">item1</option>
+    <option value="b">item2</option>
+    <option value="c">item3</option>
+</select>
+
+
+@section Scripts
+{
+    <script>
+        const selCity = document.querySelector("#select1");
+        selCity.addEventListener('change',()=>{
+            console.log(selCity.selectedIndex) //選到哪個索引，第一個物件索引為0，第二個為1
+            console.log(selCity.options[selCity.selectedIndex].text)  //印出item1
+            console.log(selCity.options[selCity.selectedIndex].value) //印出a
+        })
+        
+
+        loadCity();
+        loadsite();
+
+
+
+    function loadCity() 
+    {
+        const  xhr = new XMLHttpRequest();
+        xhr.addEventListener('load',()=>{
+        //const datas = xhr.responseText; // 得到JSON字串，不是可以使用的型態
+
+        //所以要轉型成json物件↓
+        const data = JSON.parse(xhr.responseText);
+                console.log(data);  //得到陣列物件 ['嘉義市', '桃園市',......, '臺東縣']
+        
+        //Json物件要轉成字串：console.log(JSON.stringfy(data));
+                const cityOpts = data.map((value) => {   //map()會依序把裡面的東西操作過一遍
+                    return (  `<option value=${value}>${value}</option>`);
+                })
+                selCity.innerHTML = cityOpts.join("");
+
+        })
+        xhr.open("GET","@Url.Content("~/Api/City")");
+        xhr.send();
+    }
+    
+    //未完，參考老師code，把鄉鎮區呼叫放在city裡面，road的呼叫放鄉政區呼叫裡面
+
+</script>
+}
