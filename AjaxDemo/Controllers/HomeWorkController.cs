@@ -31,9 +31,9 @@ namespace AjaxDemo.Controllers
             return Content($"{data}", "text/plain", Encoding.UTF8);
         }
 
-        public class ccc { 
-            public string name;
-            public string email;
+        public IActionResult Address()
+        {
+            return View();
         }
 
 

@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewData["Title"] = "Address";
+}
+
+<h1>各縣市地址</h1>
+
+<select id="select1"></select>
+<select id="select2"></select>
+<select id="select3"></select>
+
+
+@section Scripts{
+    <script>
+                        const selcity = document.querySelector("#select1");
+                        const selsite = document.querySelector("#select2");
+                        const selroad = document.querySelector("#select3");
+
+                        selcity.addEventListener("change", () => { loadsite() });
+                        selsite.addEventListener("change", () => { loadroad() });
+        loadcity();
+
+async function  loadcity(){
+const response = await fetch(`@Url.Content("~/Api/City")`);
+const data = await response.json();
+            const cityOpts = data.map(value => `<option value=${value}>${value}</option>`)
+                            selcity.innerHTML = cityOpts.join("");
+                            loadsite();
+}
+                        async function loadsite() {
+            const city = selcity.options[selcity.selectedIndex].value;
+            console.log(city);
+                            const response = await fetch(`@Url.Content("~/Api/Site?city=${city}")`);
+                            const data = await response.json();
+                            const siteOpts = data.map(value => `<option value=${value}>${value}</option>`)
+                            selsite.innerHTML = siteOpts.join("");
+                            loadroad();
+                        }
+
+                        async function loadroad() {
+            const site = selsite.options[selsite.selectedIndex].value;
+            const response = await fetch(`@Url.Content("~/Api/Road?site=${site}")`);
+                            const data = await response.json();
+                            const roadOpts = data.map(value => `<option value=${value}>${value}</option>`)
+                            selroad.innerHTML = roadOpts.join("");
+                              }
+
+</script>}
