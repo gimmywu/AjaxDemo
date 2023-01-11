@@ -4,13 +4,15 @@
 
 namespace CoreAPI.Controllers
 {
-    [Produces("application/xml")]
+    //[Produces("application/xml")]  //設定回傳格式為xml
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
     {
         // GET: api/<ValuesController>
+        // GET:https://localhost/api/values/
         [HttpGet]
+        [HttpGet("get.{format}"),FormatFilter]   //設定回傳格式可以自由選擇xml或json
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
