@@ -42,18 +42,30 @@
 {<script>
     const btn = document.querySelector("#btn");
          const txtname = document.querySelector("#txtname");
-        
-         const xhr = new XMLHttpRequest();  
-         xhr.addEventListener("load", () => {   
+  //-----------------------------------------------------------------    傳統版  
+         //const xhr = new XMLHttpRequest();  
+         //xhr.addEventListener("load", () => {   
              
-             document.querySelector("#span").innerHTML = xhr.responseText; 
+         //    document.querySelector("#span").innerHTML = xhr.responseText; 
+         //})
+
+         //btn.addEventListener("click",()=>{
+         //    xhr.open("POST", "/HomeWork/CheckName");
+         //xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+         //    xhr.send(`name=${txtname.value}`)
+         //});
+         //-----------------------------------------------------------------
+         txtname.addEventListener("change",async()=>{
+         console.log(txtname.value);  //框框內改變時
+             console.log(txtname.value.trim());
+             var txtfianl = txtname.value.trim()
+             if (txtfianl!= null) {
+                 const response = await fetch(`@Url.Content("~/HomeWork/CheckName?name=${txtfianl}")`);
+                 const data = await response.text();
+                 document.querySelector("#span").innerHTML = data;
+             }
          })
 
-         btn.addEventListener("click",()=>{
-             xhr.open("POST", "/HomeWork/CheckName");
-         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
-             xhr.send(`name=${txtname.value}`)
-         });
 
 
 
